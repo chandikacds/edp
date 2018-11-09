@@ -1,0 +1,35 @@
+footer
+{
+    background-color: $brand-primary;
+
+    ul{
+        justify-content: center;
+        
+        li{
+            padding-left: 15px;
+            padding-right: 15px;
+
+            a{
+                color: $white;
+                text-transform: uppercase;
+
+                &:hover{
+                    color: $white;
+                    opacity: .5;
+                }
+            }
+        }
+    }
+
+    hr{
+        border-bottom: 1px solid $gray;
+        opacity: .5;
+    }
+
+    .social-footer{
+        color:$white;
+            display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+}

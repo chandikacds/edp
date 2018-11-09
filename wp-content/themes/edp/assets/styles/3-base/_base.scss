@@ -1,0 +1,50 @@
+/* Base Styles -------------------- */
+body{
+    /*background-color: $navy-blue;*/
+     font-family: 'Gilroy-Light';
+     font-size: 14px;
+}
+
+h4,h2,h1,h3,h6{
+     font-family: 'Gilroy-ExtraBold';
+}
+
+h2{
+   font-size: 1.7rem;
+}
+
+.btn{
+    text-transform: uppercase;
+    border-radius: 0;
+    padding: 10px 40px;
+    font-size: 14px;
+    &.btn-primary{
+        background-color: $brand-primary;
+    }
+    &.btn-danger{
+        background-color: $brand-secondary;
+    }
+
+    &.btn-outline-secondary
+    {
+        border-color: #979797;
+        color:#979797;
+        letter-spacing: 1px;
+        &:hover{
+            background-color: #979797;
+             color:#fff;
+        }
+    }
+
+    &.btn-outline-white
+    {
+        border-color: #fff;
+         background-color:transparent;
+        color:#fff;
+        letter-spacing: 1px;
+        &:hover{
+            background-color: #fff;
+             color:#979797;
+        }
+    }
+}

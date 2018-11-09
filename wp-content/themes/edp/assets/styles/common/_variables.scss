@@ -1,0 +1,36 @@
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+// Descriptive color variables
+$brand-primary:#000836;
+$brand-secondary:#ed1552;
+$font-primary:#111633;
+$font-secondary:#bebebe;
+// Functional color variables
+$white:#fff;
+$navy-blue:#1d3865;
+$gray:#c1c1c1;
+
+$gray-light:#f7f7f7;
+
+// Font stacks
+
+@font-face {
+  font-family: 'Gilroy-Light';
+  src: url('../fonts/Gilroy-Light.otf'); /* IE9 Compat Modes */
+}
+@font-face {
+  font-family: 'Gilroy-ExtraBold';
+  src: url('../fonts/Gilroy-ExtraBold.otf'); /* IE9 Compat Modes */
+}
+
+@font-face {
+  font-family: 'Wild-Spirit';
+  src: url('../fonts/Wild Spirit Alt.otf'); /* IE9 Compat Modes */
+}
+
+
+
+// Asset paths
+// $path-image   :   '../img';
+// $path-fonts     :  '../fonts';

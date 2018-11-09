@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="144px" height="144px" viewBox="0 0 144 144" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(2.000000, 2.000000)">
+            <g id="Group" stroke="#FFFFFF" stroke-width="4">
+                <circle id="Oval-2" cx="70" cy="70" r="70"></circle>
+            </g>
+            <path d="M29.5732285,29.3114158 L88.6910948,29.3114158 C92.5570881,29.3114158 95.6910948,32.4454226 95.6910948,36.3114158 C95.6910948,38.0344928 95.0555729,39.6970344 93.9061977,40.9807521 L34.7883314,107.008499 C32.2095282,109.888721 27.784114,110.133069 24.9038922,107.554265 C23.4208004,106.226381 22.5732285,104.329851 22.5732285,102.339163 L22.5732285,36.3114158 C22.5732285,32.4454226 25.7072353,29.3114158 29.5732285,29.3114158 Z" id="Rectangle-2" fill="#FFFFFF" transform="translate(59.132162, 69.325322) rotate(139.000000) translate(-59.132162, -69.325322) "></path>
+        </g>
+    </g>
+</svg>

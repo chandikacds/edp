@@ -1,0 +1,24 @@
+.flexslider{
+    margin-bottom: 5px !important;
+}
+#slider .flex-direction-nav a:before {
+    font-family: "flexslider-icon";
+    font-size: 25px;
+    display: inline-block;
+    content: '\f001';
+    color: rgba(255, 255, 255, 0.34);
+    text-shadow: none;
+}
+
+#slider .flex-direction-nav a.flex-next:before {
+    content: '\f002';
+}
+
+#slider .flex-direction-nav a:before {
+    font-family: "flexslider-icon";
+    font-size: 25px;
+    display: inline-block;
+    content: '\f001';
+    color: rgb(255, 255, 255);
+    text-shadow: none;
+}

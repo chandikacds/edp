@@ -1,0 +1,185 @@
+@media (max-width:767px){
+
+    .caption{
+        display: none;
+    }
+
+    .logo{
+        display: none;
+    }
+      .logo-mobi{
+        display: block;
+    }
+
+    .navbar{
+            flex-direction: row !important;
+    align-items: center !important;
+    width: 100%;
+    padding-left: 0;
+    }
+
+
+header{
+    .navbar{
+        div{
+                display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 12px;
+
+
+    ul{
+            overflow: hidden;
+    flex-direction: row;
+
+
+    li{
+    overflow: hidden;
+    margin-right: 10px;
+    }
+    }
+        }
+    }
+
+    .social{
+        display: none;
+    }
+}
+
+.review .post-review-header{
+        flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0 !important;
+
+    span.badge, .shares{
+        display: none;
+    }
+}
+
+.slider-wrapper{
+    padding-left: 0.5rem !important;
+}
+
+.review .g-map {
+    height: 280px;
+    margin-bottom: 20px;
+    background-size: cover;
+}
+
+.outer-div{
+    margin-top:20px;
+}
+.g-map{
+        height: 291px;
+    margin-top: 20px;
+}
+
+.map{
+    text-align:center;
+
+    form select{
+        width:100%;
+    }
+}
+
+.post.plan {
+    background-image: url(../img/plan.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #ef0b4f;
+    height: 180px;
+}
+.toggler{
+    width: 30px;
+}
+
+.sub-heading.line:after{
+        width: calc(100% - 240px);
+}
+
+footer{
+    ul.flex-row-mobi{
+        flex-direction: column !important;
+    }
+
+     .social-footer{
+             flex-direction: column-reverse;
+     }
+
+     small{
+         margin-top: 10px;
+     }
+}
+
+.newsletter{
+
+padding: 0!important;
+.form-group{
+    width:100%;
+
+    .btn{
+        width:100%;
+        position: relative;
+    }
+}
+}
+
+.view{
+    display: none;
+}
+
+.mobi-hide{
+    display: block;
+}
+
+}
+
+
+@media (max-width:540px){
+
+    header{
+    .navbar{
+        div{
+                display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 12px;
+    flex-direction: row-reverse;
+
+    ul{
+            overflow: hidden;
+    flex-direction: row;
+    margin-left: 21px;
+    margin-right: 0 !important;
+
+    li{
+            /*width: 29px;
+    overflow: hidden;
+    margin-right: 10px;*/
+    }
+    }
+        }
+    }
+
+    .social{
+        display: none;
+    }
+}
+
+header .form-inline .btn {
+   position: absolute;
+    right: 1px;
+    width: 40px;
+    padding: 2px;
+    border: 0;
+}
+
+header .form-inline input {
+  
+    width: 175px !important;
+  
+}
+
+}
