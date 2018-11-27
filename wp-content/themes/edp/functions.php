@@ -15,7 +15,10 @@ $sage_includes = [
   'lib/setup.php',     // Theme setup
   'lib/titles.php',    // Page titles
   'lib/wrapper.php',   // Theme wrapper class
-  'lib/customizer.php' // Theme customizer
+  'lib/customizer.php', // Theme customizer
+  'lib/admindashboard.php',
+  'lib/custom_wp.php',
+  
 ];
 
 foreach ($sage_includes as $file) {
@@ -28,3 +31,13 @@ foreach ($sage_includes as $file) {
 unset($file, $filepath);
 
 
+//custome image size
+add_image_size( 'edp-slider-mainimge', 830, 'auto', true ); 
+
+add_action('admin_footer', 'my_admin_add_js');
+
+function my_admin_add_js() {
+
+ echo '<script src='.get_template_directory_uri().'/assets/scripts/custom_admin.js></script>';
+
+}

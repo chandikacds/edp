@@ -88,6 +88,13 @@ function display_sidebar() {
     is_404(),
     is_front_page(),
     is_page_template('template-custom.php'),
+    is_archive(),
+    is_page_template( 'template-trending.php' ),
+    is_page_template( 'template-latestpost.php' ),
+    is_page_template( 'template-essentialguides.php' ),
+    is_page_template( 'template-secretfoodies.php' ),
+    is_search(),
+    
   ]);
 
   return apply_filters('sage/display_sidebar', $display);

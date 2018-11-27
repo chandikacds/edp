@@ -48,7 +48,7 @@ require_once ABSPATH . WPINC . '/class-walker-nav-menu.php';
 function wp_nav_menu( $args = array() ) {
 	static $menu_id_slugs = array();
 
-	$defaults = array( 'menu' => '', 'container' => 'div', 'container_class' => '', 'container_id' => '', 'menu_class' => 'menu', 'menu_id' => '',
+	$defaults = array( 'menu' => '', 'container' => '', 'container_class' => '', 'container_id' => '', 'menu_class' => 'menu', 'menu_id' => '',
 	'echo' => true, 'fallback_cb' => 'wp_page_menu', 'before' => '', 'after' => '', 'link_before' => '', 'link_after' => '', 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>', 'item_spacing' => 'preserve',
 	'depth' => 0, 'walker' => '', 'theme_location' => '' );
 
@@ -172,7 +172,7 @@ function wp_nav_menu( $args = array() ) {
 	if ( $menu_items_with_children ) {
 		foreach ( $sorted_menu_items as &$menu_item ) {
 			if ( isset( $menu_items_with_children[ $menu_item->ID ] ) )
-				$menu_item->classes[] = 'menu-item-has-children';
+				$menu_item->classes[] = 'dropdown';
 		}
 	}
 
@@ -341,9 +341,9 @@ function _wp_menu_item_classes_by_context( &$menu_items ) {
 		$menu_items[$key]->current = false;
 
 		$classes = (array) $menu_item->classes;
-		$classes[] = 'menu-item';
-		$classes[] = 'menu-item-type-' . $menu_item->type;
-		$classes[] = 'menu-item-object-' . $menu_item->object;
+		$classes[] = 'nav-item';
+		//$classes[] = 'menu-item-type-' . $menu_item->type;
+		//$classes[] = 'menu-item-object-' . $menu_item->object;
 
 		// This menu item is set as the 'Front Page'.
 		if ( 'post_type' === $menu_item->type && $front_page_id === (int) $menu_item->object_id ) {

@@ -332,8 +332,8 @@ ul{
     align-items: center;
     justify-content: space-between;
     .avatar{
-            width: 100px;
-    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
     overflow: hidden;
     border-radius: 50%;
     float: left;
@@ -408,3 +408,78 @@ small{
         height:280px;
     }
 }
+
+.sub-menu{
+    @extend .dropdown-menu;
+}
+
+
+.sub-menu li a {
+    font-weight: bold !important;
+    font-size: 12px !important;
+    color: $brand-primary !important;
+}
+
+#slider .author{
+    color: $white !important;
+}
+.review .badge, #slider .badge{
+margin-right: 5px;
+}
+#slider .badge a{
+     color: #212529 !important;
+}
+.review .badge a{
+    color: $white !important;
+}
+
+#slider h4 a.title{
+     color: $white !important;
+}
+
+.singlepost_mainimg img{
+    max-width: 100%;
+}
+
+.review h4 .author{
+     color: #212529 !important;
+}
+
+
+
+.text_overwrite_black{
+    color: #212529 !important;
+}
+.text_overwrite_white{
+    color: $white !important;
+}
+
+.post-review .post-body img{
+    max-width: 100%;
+}
+.current-menu-item > a::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+
+
+.current-menu-item .sub-menu{
+ display: block !important;   
+}
+.current-menu-item > a{
+    color: #ed1552 !important;
+    font-family: 'Gilroy-ExtraBold' !important;
+}
+
+.post-body h3 a{
+    color: $font-primary !important;
+}
+

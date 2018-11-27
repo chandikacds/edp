@@ -84,6 +84,14 @@ $meta_boxes[] = array(
 				// Value can be 0 or 1
 				'std'  => 0,
 			),
+			// Check box
+			array(
+				'name'    => __( 'Secret Foodies', 'rwmb' ),
+				'id'      => "{$prefix}secret_foodies_add",
+				'type' => 'checkbox',
+				// Value can be 0 or 1
+				'std'  => 0,
+			),
 			
 	),
 
@@ -99,7 +107,7 @@ $day_list["THU"] = "Thursday";
 $day_list["FRI"] = "Friday";
 $day_list["SAT"] = "Saturday";
 
-
+$prefixnew = 'field_prefix_';
 $slug = "opening_hours";
 //Meta box contact page meta box
 $meta_boxes[] = array(
@@ -132,7 +140,7 @@ $meta_boxes[] = array(
 	    'fields' => array(
 			array(
 						   'name'  => esc_html__( 'Choose Day:', 'your-prefix' ),
-						   'id'    => "{$prefix}{$slug}_name",
+						   'id'    => "{$prefixnew}{$slug}_name",
 						   'type'    => 'select',
 						    // Options of autocomplete, in format 'value' => 'Label'
 						    'options' => $day_list,
@@ -141,7 +149,7 @@ $meta_boxes[] = array(
 						),
 			array(
 							'name'       => esc_html__( 'Start time', 'your-prefix' ),
-							'id'    => "{$prefix}{$slug}_from_time",
+							'id'    => "{$prefixnew}{$slug}_from_time",
 							'type'       => 'time',
 							// jQuery datetime picker options.
 							// For date options, see here http://api.jqueryui.com/datepicker
@@ -154,7 +162,7 @@ $meta_boxes[] = array(
 						),
 					array(
 							'name'       => esc_html__( 'End time', 'your-prefix' ),
-							'id'         => "{$prefix}{$slug}_to_time",
+							'id'         => "{$prefixnew}{$slug}_to_time",
 							'type'       => 'time',
 							// jQuery datetime picker options.
 							// For date options, see here http://api.jqueryui.com/datepicker
@@ -208,7 +216,7 @@ $meta_boxes[] = array(
 	    	 array(
         		'name'  => esc_html__( 'Heading', 'rwmb' ),
         		//'label_description' => esc_html__( 'e.g Membership benefits explained', 'rwmb' ),
-        		'id'    => "{$prefix}{$slug}_heading",
+        		'id'    => "{$prefixnew}{$slug}_heading",
         		'desc'  => esc_html__( 'Enter the text you want show link', 'rwmb' ),
         		'type'  => 'text',
         		'std'   => esc_html__( '', 'rwmb' ),
@@ -217,7 +225,7 @@ $meta_boxes[] = array(
 				 array(
         		'name'  => esc_html__( 'Link text', 'rwmb' ),
         		//'label_description' => esc_html__( 'e.g Membership benefits explained', 'rwmb' ),
-        		'id'    => "{$prefix}{$slug}_text",
+        		'id'    => "{$prefixnew}{$slug}_text",
         		'desc'  => esc_html__( 'Enter the text you want show link', 'rwmb' ),
         		'type'  => 'text',
         		'std'   => esc_html__( '', 'rwmb' ),
@@ -226,7 +234,7 @@ $meta_boxes[] = array(
 	        array(
         		'name'  => esc_html__( 'URL', 'rwmb' ),
         		//'label_description' => esc_html__( 'e.g Membership benefits explained', 'rwmb' ),
-        		'id'    => "{$prefix}{$slug}_url",
+        		'id'    => "{$prefixnew}{$slug}_url",
         		'desc'  => esc_html__( 'Enter the URL as per the link name above', 'rwmb' ),
         		'type'  => 'text',
         		'std'   => esc_html__( '', 'rwmb' ),
@@ -239,6 +247,143 @@ $meta_boxes[] = array(
     ),
 
 	);
+
+$slug = "venue";
+$prefix = "rw_";
+
+$county_list = array();
+$county_list['au']="Australia";
+
+
+
+$args = array( 'post_type' => 'base_venue','orderby' => 'post_title', 'order'=> 'ASC', 'posts_per_page' => -1 );
+$allproject = get_posts( $args );
+
+
+$venu_list = array();
+foreach ($allproject as $key => $post) {
+ 
+    $post_id = $post->ID;
+    $venu_list[$post_id]=$post->post_title;
+    
+}
+
+
+$meta_boxes[] = array(
+	// Meta box id, UNIQUE per meta box. Optional since 4.1.5
+	'id' => 'venue-meta',
+	// Meta box title - Will appear at the drag and drop handle bar. Required.
+	'title' => __( 'Venue Information', 'rwmb' ),
+	// Post types, accept custom post types as well - DEFAULT is array('post'). Optional.
+	'pages' => array( 'base_sydney','base_melbourne','post'),
+	// Where the meta box appear: normal (default), advanced, side. Optional.
+	'context' => 'normal',
+	// Order of meta box: high (default), low. Optional.
+	'priority' => 'high',
+	// Auto save: true, false (default). Optional.
+	'autosave' => true,
+	'geo' => array(
+    'componentRestrictions' => array(
+        'country' => 'au',
+    )
+),
+	// Register this meta box for posts matched below conditions
+	//'include' => array('ID'  => array( 4 ),),
+	// List of meta fields
+	'fields' => array(
+
+				  array(
+						   'name'  => esc_html__( 'Use Saved Venue:', 'your-prefix' ),
+						   'id'    => "{$prefix}{$slug}_name",
+						   'type'    => 'autocomplete',
+						    // Options of autocomplete, in format 'value' => 'Label'
+						    'options' => $venu_list,
+												 
+
+						),
+				  array(
+						'name'  => esc_html__( 'Or New Venue Name:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_newname",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+
+				  array(
+						'name'  => esc_html__( 'Name ID:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_name_id",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'  => 'hidden',
+						'clone' => false,
+					),
+					
+
+					array(
+						'name'  => esc_html__( 'Address:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_address",
+						//'desc'  => esc_html__( 'Enter the Email', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					 	
+					 array(
+						'name'  => esc_html__( 'City:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_city",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					
+					  array(
+						   'name'  => esc_html__( 'Contry:', 'your-prefix' ),
+						   'id'    => "{$prefix}{$slug}_country",
+						   //'desc'  => esc_html__( 'Select the Project status', 'your-prefix' ),
+						    'type'            => 'select',
+						    // Array of 'value' => 'Label' pairs
+						    'options'         => $county_list,
+						    // Allow to select multiple value?
+						    'multiple'        => false,
+						    // Placeholder text
+						   // 'placeholder'     => 'Select an Item',
+						    // Display "Select All / None" button?
+						    'select_all_none' => true,
+						 
+
+						),
+					  
+					    array(
+						'name'  => esc_html__( 'State or Province:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_state",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					    array(
+						'name'  => esc_html__( 'Postal Code:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_postcode",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					array(
+						'name'  => esc_html__( 'Phone:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_phone",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					array(
+						'name'  => esc_html__( 'Website:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_website",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					
+					
+					
+					
+));
 
 
 

@@ -9,7 +9,25 @@
  * The routing is enclosed within an anonymous function so that you can
  * always reference jQuery with $, even when in .noConflict() mode.
  * ======================================================================== */
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname+"="+cvalue+"; "+expires;
+}
 
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 (function($) {
 
   // Use this variable to set up the common and page specific functions. If you
@@ -19,6 +37,21 @@
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+        
+        $( "body" ).delegate( "#base_sydney", "click", function(event) {
+          event.preventDefault();
+          setCookie('USR_CITY','base_sydney',120);
+          window.location.reload();
+
+        });
+        $( "body" ).delegate( "#base_melbourne", "click", function(event) {
+          event.preventDefault();
+          setCookie('USR_CITY','base_melbourne',120);
+          window.location.reload();
+
+        });
+
+        
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
@@ -29,6 +62,9 @@
       init: function() {
         // JavaScript to be fired on the home page
         $( document ).ready(function() {
+
+          $("#menu-primary-navigation > #menu-item-35608").addClass('current-menu-item');
+
           $(window).on("load",function() {
           // The slider being synced must be initialized first
             $('#carousel').flexslider({

@@ -1,196 +1,110 @@
-  <section class="home-slider">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-12 pr-0 p0-mobi">
-          <aside class="d-flex pt-3">
-            <nav class="navbar navbar-expand-md flex-column align-items-start">
-              <img class="logo img-fluid" src="<?php echo get_template_directory_uri(); ?>/assets/img/EatDrinkPlay.png" alt="">
-              <button class="navbar-toggler pl-0" type="button" data-toggle="collapse" data-target="#primary-nav" aria-controls="primary-nav"
-                aria-expanded="false" aria-label="Toggle navigation">
-             <img class="toggler" src="<?php echo get_template_directory_uri(); ?>/assets/img/menu.svg" />
-           </button>
-              <img class="logo-mobi" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-mobi.jpg" alt="">
+    <?php
+ global $active_city;
+    $posttype = $active_city;
 
-              <div class="collapse navbar-collapse flex-column align-items-start" id="primary-nav">
+    $slides_num = 3;
+    $trending = new WP_Query(
+        array(
+            'post_type' => array($posttype),
+            'posts_per_page' => $slides_num,
+            'meta_key' => '_is_featured',
+            'meta_value' => 'yes',
+            'orderby' => 'date',
+            'order' => 'DESC'
+        )
+    );
 
-            <?php
-              if (has_nav_menu('main_menu')) :
-                wp_nav_menu(['theme_location' => 'main_menu', 'menu_class' => 'navbar-nav flex-column']);
-              endif;
-              ?>
-        </div>
-            </nav>
 
-          </aside>
-        </div>
-        <div class="col-md-8 col-lg-9  col-sm-12 p-0">
-          <div class="pt-2 pr-2 slider-wrapper">
-            <div id="slider" class="flexslider">
-              <ul class="slides">
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide1.jpg" />
-                  <div class="caption">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-                    <span class="badge">secret Foodies</span>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus numquam.</h4>
-                    <small>kaddy oconner | 5 mints ago</small>
-                  </div>
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide2.jpg" />
-                  <div class="caption">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-                    <span class="badge">Eat</span>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus numquam.</h4>
-                    <small>kaddy oconner | 5 mints ago</small>
-                  </div>
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide3.jpg" />
-                  <div class="caption">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/drink.svg" />
-                    <span class="badge">Drink</span>
-                    <h4>Lorem consectetur adipisicing elit. Temporibus numquam.</h4>
-                    <small>kaddy oconner | 5 mints ago</small>
-                  </div>
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide4.jpg" />
-                  <div class="caption">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-                    <span class="badge">Play</span>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus numquam.</h4>
-                    <small>kaddy oconner | 5 mints ago</small>
-                  </div>
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide5.jpg" />
-                  <div class="caption">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-                    <span class="badge">SECRET FOODIES</span>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus numquam.</h4>
-                    <small>kaddy oconner | 5 mints ago</small>
-                  </div>
-                </li>
 
-                <!-- items mirrored twice, total of 12 -->
-              </ul>
-            </div>
-            <div id="carousel" class="flexslider">
-              <ul class="slides">
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide1.jpg" />
-                  <div class="caption bottom">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-                    <span class="badge">SECRET FOODIES</span>
-                  </div>
+?>
+    <?php if ( $trending->have_posts() ) { ?>
 
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide2.jpg" />
-                  <div class="caption bottom">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-                    <span class="badge">Eat</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide3.jpg" />
-                  <div class="caption bottom">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-                    <span class="badge">Drink</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide4.jpg" />
-                  <div class="caption bottom">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-                    <span class="badge">play</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide5.jpg" />
-                  <div class="caption bottom">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-                    <span class="badge">SECRET FOODIES</span>
-                  </div>
-                </li>
-
-                <!-- items mirrored twice, total of 12 -->
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="trending mt-5">
+    <section class="trending mt-5">
 
     <div class="container">
-      <div class="row">
+<?php 
+$countpost=1;
+$total = $trending->post_count;
+
+while ( $trending->have_posts() ) : $trending->the_post(); ?>
+
+<?php if($countpost==1){ ?>
+        <div class="row">
         <div class="col-md-12">
           <h3 class=" sub-heading pt-5 mb-4">Trending</h3>
         </div>
         <div class="col-md-5 align-items-end d-flex">
           <div class="post-title">
             <span class="badge danger">Play</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
+              <h2>"<a href="<?php the_permalink(); ?>" class="title text_overwrite_black" ><?php the_title(); ?></a>"</h2>
+            <small><a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" class="author text_overwrite_black" rel="author">
+                                            <?php the_author_meta( 'display_name' ); ?>
+                                        </a> | <?php echo esc_html( human_time_diff( get_the_time('U'), current_time('timestamp') ) ) . ' ago'; ?></small>
           </div>
         </div>
         <div class="col-md-7">
           <div class="outer-div mb-4">
             <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-            <div class="post food">
-
-
+            <div class="post food" style="background-image: url('<?php echo the_post_thumbnail_url('large'); ?>');">
+              
             </div>
           </div>
         </div>
 
       </div>
+<?php }else{ ?>
 
+  
+
+    <?php if($countpost==2){ ?>
       <div class="row mt-4">
         <div class="col-md-5">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-            <div class="post travel">
-              
-
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
+          <?php  get_template_part( 'templates/content', 'post' ); ?>
         </div>
+<?php } ?>
+<?php if($countpost==3){ ?>
         <div class="col-md-7">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-            <div class="post drink">
-              
-
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
+          <?php  get_template_part( 'templates/content', 'post_large' ); ?>
         </div>
-      </div>
+       </div>
+        <?php } ?>
+
+        <?php if($total==2){ ?>
+        </div>
+        <?php } ?>
+     
+
+<?php } ?>
+
+ <?php $countpost++; endwhile; ?>
+      
+
+      
 
       <div class="row">
         <div class="col-md-12 text-center mt-5 mb-5">
-          <button class="btn btn-outline-secondary">View all</button>
+          <a href="<?php echo home_url().'/trending' ?>" class="btn btn-outline-secondary">View all</a>
         </div>
       </div>
     </div>
   </section>
+<?php } ?>
 
+<?php
+//Essential Guides
+    $_num = 6;
+    $essential = new WP_Query(
+        array(
+            'post_type' => array($posttype),
+            'posts_per_page' => $_num,
+            'meta_key' => 'baz_essential_guide_add',
+            'meta_value' => '1',
+            'orderby' => 'date',
+            'order' => 'DESC'
+        )
+    );
+?>
+<?php if ( $essential->have_posts() ) { ?>
   <section class="guid mt-5">
 
     <div class="container">
@@ -199,190 +113,103 @@
         <div class="col-md-12 mb-4">
           <h3 class=" sub-heading line pt-5">Essential Guides</h3>
         </div>
-
-        <div class="col-md-4">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-            <div class="post travel">
-              
-
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-            <div class="post drink">
-              
-
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-            <div class="post travel">
-
-
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">play</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
-      </div>
+     </div>
 
       <div class="row mt-5">
-        <div class="col-md-4">
-          <div class="outer-div">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-            <div class="post food">
-              
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
+<?php while ( $essential->have_posts() ) : $essential->the_post(); ?>
+         <div class="col-md-4 mb-5">
+            <?php  get_template_part( 'templates/content', 'post' ); ?>
         </div>
-        <div class="col-md-4">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-            <div class="post drink">
-              
 
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-            <div class="post travel">
-
-
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">play</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
+       <?php endwhile; ?>
+       
       </div>
 
       <div class="row">
         <div class="col-md-12 text-center mt-5 mb-5">
-          <button class="btn btn-outline-secondary">View all</button>
+         <a href="<?php echo home_url().'/essential-guides' ?>" class="btn btn-outline-secondary">View all</a>
         </div>
       </div>
     </div>
   </section>
 
+<?php } ?>
+
   <section class="latest-news mt-5">
 
     <div class="container">
 
-      <div class="row mt-4">
+      <div class="row mt-4 ">
         <div class="col-md-12">
           <h3 class=" sub-heading line pt-5 mb-4">latest news</h3>
         </div>
-
-        <div class="col-md-5">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-            <div class="post travel">
-              
-
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
-        <div class="col-md-7">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-            <div class="post drink">
-              
-
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
-
       </div>
+        <?php
+               $maxpost = 5;
+                $recent_posts = new WP_Query(
+                    array(
+                        'post_type' => array($posttype, 'post'),
+                        'posts_per_page' => $maxpost,
+                        'orderby' => 'date',
+                        'order' => 'DESC'
+                    )
+                );
 
-      <div class="row mt-5">
-        <div class="col-md-4">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-            <div class="post food">
-              
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-            <div class="post drink">
-              
+            ?>
+        <?php if ( $recent_posts->have_posts() ) { ?>
 
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-            <div class="post travel">
+         <?php 
+         $recent_key = 0;
+         while ( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
+            <?php if($recent_key==0){ ?>
+                    <div class="row mt-4">
+                      <div class="col-md-5">
+                        <?php  get_template_part( 'templates/content', 'post' ); ?>
+                      </div>
+              <?php } ?>
+              <?php if($recent_key==1){ ?>
+                      <div class="col-md-7">
+                        <?php  get_template_part( 'templates/content', 'post_large' ); ?>
+                      </div>
+                  </div>
+                      <?php } ?>
+
+                      <?php if($recent_key==2){ ?>
+                    <div class="row mt-4">
+                      <div class="col-md-4">
+                        <?php  get_template_part( 'templates/content', 'post' ); ?>
+                      </div>
+              <?php } ?>
+              <?php if($recent_key==3){ ?>
+                      <div class="col-md-4">
+                        <?php  get_template_part( 'templates/content', 'post_large' ); ?>
+                      </div>
+                  
+                      <?php } ?>
+                      <?php if($recent_key==4){ ?>
+                      <div class="col-md-4">
+                        <?php  get_template_part( 'templates/content', 'post_large' ); ?>
+                      </div>
+                  </div>
+                      <?php } ?>
 
 
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">play</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
-      </div>
+                     <?php $recent_key++; endwhile; 
+
+
+}
+                     ?>
+                    
+
+          
+
+      
+
+      
 
       <div class="row">
         <div class="col-md-12 text-center mt-5 mb-5">
-          <button class="btn btn-outline-secondary">View all</button>
+          <a href="<?php echo home_url().'/latest-news' ?>" class="btn btn-outline-secondary">View all</a>
         </div>
       </div>
     </div>
@@ -428,6 +255,21 @@
     </div>
   </section>
 
+  <?php
+//Secret Foodies
+    $_num = 3;
+    $secret = new WP_Query(
+        array(
+            'post_type' => array($posttype),
+            'posts_per_page' => $_num,
+            'meta_key' => 'baz_secret_foodies_add',
+            'meta_value' => '1',
+            'orderby' => 'date',
+            'order' => 'DESC'
+        )
+    );
+?>
+<?php if ( $secret->have_posts() ) { ?>
   <section class="guid mt-5">
 
     <div class="container">
@@ -442,56 +284,20 @@
       <div class="row mt-4">
         <div class="col-md-12">
           <div class="post plan mb-4">
-            <button class="btn btn-outline-white">View all</button>
-
+            <a href="<?php echo home_url().'/secret-foodies' ?>" class="btn btn-outline-white">View all</a>
           </div>
         </div>
+        <?php while ( $secret->have_posts() ) : $secret->the_post(); ?>
         <div class="col-md-4">
-           <div class="outer-div mb-4">
-            <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-             
-          <div class="post food">
-      </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
+            <?php  get_template_part( 'templates/content', 'post' ); ?>
         </div>
-        <div class="col-md-4">
-          <div class="outer-div mb-4">
-             <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-            <div class="post drink">
-             
-
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">Travel</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="outer-div mb-4">
-             <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-            <div class="post travel">
-             
-
-            </div>
-          </div>
-          <div class="post-title">
-            <span class="badge danger">play</span>
-            <h2>"Lorem ipsum dolor sit amet, consectetur adipisicing elit"</h2>
-            <small>kaddy oconner | 5 mints ago</small>
-          </div>
-        </div>
+        <?php endwhile; ?>
+        
       </div>
 
     </div>
   </section>
-
+<?php } ?>
   <section class="insta">
 
     <div class="container">
