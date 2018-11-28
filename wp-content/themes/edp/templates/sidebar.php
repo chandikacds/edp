@@ -74,7 +74,7 @@ echo '<br>'.$rw_venue_state;
 
    <?php
          if(!empty($rw_venue_address)){
-              echo '<div class="g-map">';
+              echo '<div class="g-map mb-5">';
            echo '<iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.it/maps?q='.$rw_venue_address.'&output=embed"></iframe>';
 
            echo "</div>";
@@ -114,60 +114,35 @@ echo '<br>'.$rw_venue_state;
 
                     <div class="popular-posts">
                         <h6>Popular posts</h6>
+                        <?php
+                        global $active_city;
+                          $posttype = $active_city;
 
-                        <div class="row">
-                            <div class="col-md-5 pr-md-0">
-                                <div class="outer-div mb-4">
-                                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg">
-
-                                    <div class="post food"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-7 pr-md-0">
-                                <div class="post-title">
-                                    <span class="badge danger">Travel</span>
-                                    <h2>Lorem ipsum dolor sit amet, consectetur</h2>
-                                    <small>kaddy oconner | 5 min ago</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-5 pr-md-0">
-                                <div class="outer-div mb-4">
-                                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg">
-
-                                    <div class="post food"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-7 pr-md-0">
-                                <div class="post-title">
-                                    <span class="badge danger">Travel</span>
-                                    <h2>Lorem ipsum dolor sit amet, consectetur</h2>
-                                    <small>kaddy oconner | 5 min ago</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-5 pr-md-0">
-                                <div class="outer-div mb-4">
-                                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg">
-
-                                    <div class="post drink"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-7 pr-md-0">
-                                <div class="post-title">
-                                    <span class="badge danger">Travel</span>
-                                    <h2>Lorem ipsum dolor sit amet, consectetur</h2>
-                                    <small>kaddy oconner | 5 min ago</small>
-                                </div>
-                            </div>
-                        </div>
+                          $slides_num = 4;
+                          $popularpost = new WP_Query(
+                              array(
+                                  'post_type' => array($posttype),
+                                  'posts_per_page' => $slides_num,
+                                  'meta_key' => 'wpb_post_views_count',
+                                  //'meta_value' => '1',
+                                  'orderby' => 'meta_value',
+                                  'order' => 'DESC'
+                              )
+                          );
 
 
+                        /* $popularpost = new WP_Query( array( 'posts_per_page' => 4, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value', 'order' => 'DESC'  ) ); */
 
+
+                          while ( $popularpost->have_posts() ) : $popularpost->the_post();
+                            //the_title();
+                         get_template_part( 'templates/content', 'post_small' );
+                           
+                          endwhile;
+                        ?>
+
+                       
+                      
 
                     </div>
 

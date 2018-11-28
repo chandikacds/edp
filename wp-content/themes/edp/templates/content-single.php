@@ -14,4 +14,7 @@
                                <?php the_content(); ?>
                         </div>
                     </div>
+    <?php
+     //var_dump(get_the_ID());
+     wpb_set_post_views(get_the_ID()); ?>                
 <?php endwhile; ?>
