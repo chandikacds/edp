@@ -94,6 +94,7 @@ function display_sidebar() {
     is_page_template( 'template-essentialguides.php' ),
     is_page_template( 'template-secretfoodies.php' ),
     is_search(),
+    is_page_template(),
     
   ]);
 

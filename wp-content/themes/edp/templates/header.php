@@ -23,13 +23,13 @@
           </form>
           <ul class="navbar-nav social">
             <li class="nav-item">
-              <a class="nav-link active" href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/fb.svg" alt=""></a>
+              <a class="nav-link active" href="https://www.facebook.com/eatdrinkplay"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/fb.svg" alt=""></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/insta.svg" alt=""></a>
+              <a class="nav-link" href="https://twitter.com/msdarlinghurst"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/insta.svg" alt=""></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/you.svg" alt=""></a>
+              <a class="nav-link" href="https://www.instagram.com/eatdrinkplaysyd/"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/you.svg" alt=""></a>
             </li>
 
 

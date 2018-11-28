@@ -225,7 +225,8 @@ while ( $trending->have_posts() ) : $trending->the_post(); ?>
         </div>
 
         <div class="col-md-5">
-          <h2 class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>
+          <h2 class="mb-4">Directory Selection We can use this space to create a little!
+</h2>
           <form action="">
             <div class="form-group">
               <select class="form-control" name="" id="">
@@ -308,54 +309,20 @@ while ( $trending->have_posts() ) : $trending->the_post(); ?>
         </div>
 
       </div>
-      <div class="row mb-5 mt-4">
-        <div class="col pr-0">
-          <div class="insta-wrapper play">
 
-          </div>
-
-        </div>
-        <div class="col p-0">
-          <div class="insta-wrapper food">
-
-          </div>
-
-        </div>
-        <div class="col p-0">
-          <div class="insta-wrapper drink">
-
-          </div>
-
-        </div>
-        <div class="col p-0">
-          <div class="insta-wrapper travel">
-
-          </div>
-
-        </div>
-        <div class="col p-0">
-          <div class="insta-wrapper food">
-
-          </div>
-
-        </div>
-        <div class="col pl-0">
-          <div class="insta-wrapper play">
-
-          </div>
-
-        </div>
-      </div>
+      
+       <?php dynamic_sidebar('sidebar-footer'); ?>
+    
     </div>
 
   </section>
 
 
-  <section class="newsletter p-5">
+  <section class="newsletter p-5 mt-4">
 
     <div class="container">
 
-      <h1>Newsletter</h1>
+      <h1 class="pt-5">Newsletter</h1>
       <p>Discover and Enjoy New Places</p>
 
       <div class="form-group">
