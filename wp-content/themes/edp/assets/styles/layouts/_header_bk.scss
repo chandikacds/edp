@@ -1,0 +1,59 @@
+header{
+    background-color: $brand-primary;
+
+    .navbar-nav{
+
+        li{
+            a{
+                text-transform: uppercase;
+                color:$white;
+                font-size: 12px;
+                letter-spacing: 4px;
+                &.active{
+                    color:$brand-secondary;
+                }
+            }
+        }
+    }
+
+    .form-inline{
+
+        position: relative;
+
+        input{
+            border-radius: 0;
+            border: 0;
+                width: 320px !important;
+    text-align: center;
+    padding: 0;
+    height: 28px;
+    font-size: 14px;
+        }
+        .btn{
+     position: absolute;
+    right: 9px;
+    width: 40px;
+    padding: 2px;
+    border: 0;
+        }
+    }
+}
+
+.logo-mobi{
+    display: none;
+}
+
+.mobi-hide{
+    display: none;
+}
+
+.sign{
+    font-family: Wild-Spirit;
+    font-family: Wild-Spirit;
+    text-transform: capitalize;
+    font-size: 32px;
+    color: $brand-secondary;
+    letter-spacing: 1px;
+    margin-top: 10px;
+
+}

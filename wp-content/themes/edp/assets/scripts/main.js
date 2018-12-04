@@ -62,6 +62,8 @@ function getCookie(cname) {
       init: function() {
         // JavaScript to be fired on the home page
         $( document ).ready(function() {
+          //for load map defult
+        $(".search_sub_show_result").trigger('click');
 
           $("#menu-primary-navigation > #menu-item-35608").addClass('current-menu-item');
 
@@ -85,6 +87,44 @@ function getCookie(cname) {
               sync: "#carousel"
             });
           });
+
+          
+          $('body').delegate('.show_me_in_map', 'click', function(){
+
+              var address = $(this).attr('address');
+              //alert(address);
+              $("div[title='"+address+"'] img").trigger('click');
+          });
+          //load map date
+
+         /* $('body').delegate('.search_sub_show_result', 'click', function(){
+            var maintag = $("#maintag").val();
+            var suburb = $("#suburb").val();
+
+            var  method ="post";
+          var  url ="loadMapData";
+           $.ajax({
+                  type: method,
+                  url: ajaxurl,
+                  data: {
+                    'action':url,
+                    'maintag': maintag,
+                    'suburb': suburb
+
+                  },
+                  success:function(response) {
+                    
+                  },
+                  error: function(errorThrown){
+                      console.log(errorThrown);
+                  }
+                });
+
+
+
+          }); */
+
+
         });
       },
       finalize: function() {

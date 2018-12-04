@@ -20,6 +20,7 @@
                                 jQuery('#rw_venue_phone').val(obj.rw_venue_phone);
                                 jQuery('#rw_venue_website').val(obj.rw_venue_website);
                                 jQuery('#rw_venue_address').val(obj.rw_venue_address);
+                                jQuery('#rw_venue_suburb').val(obj.rw_venue_suburb);
                                 
 /*
                               if(disabled === 1){
@@ -84,6 +85,7 @@
                     jQuery('#venue-meta #rw_venue_phone').val("");
                     jQuery('#venue-meta #rw_venue_website').val("");
                     jQuery('#venue-meta #rw_venue_address').val("");
+                    jQuery('#venue-meta #rw_venue_suburb').val("");
                     jQuery('#venue-meta .rwmb-autocomplete-result').html("");
                     jQuery('#venue-meta .rwmb-autocomplete-result').css("border-bottom","0px");
                     jQuery('#venue-meta .rwmb-autocomplete-result').css("padding","0em 0");

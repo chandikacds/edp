@@ -217,6 +217,204 @@ while ( $trending->have_posts() ) : $trending->the_post(); ?>
 
   <section class="map">
     <div class="container">
+
+<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
+
+  
+    <script>
+    jQuery( document ).ready(function() {
+        var map;
+        var bounds
+        var locationCount;
+        var infoWindow = null;
+        // The array of locations to mark on the map.
+        // Add as many locations as necessary.
+        
+        // Init the map
+        function init(locations) {
+            // Customize look of the map.
+            // https://www.mapbuildr.com/
+            var mapOptions = {
+                zoom: 14,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.SMALL,
+                },
+                disableDoubleClickZoom: true,
+                mapTypeControl: false,
+                panControl: false,
+                scaleControl: false,
+                scrollwheel: false,
+                streetViewControl: false,
+                draggable : true,
+                overviewMapControl: false,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                styles: [{
+                    featureType: 'all',
+                    stylers: [
+                        {saturation: -100},
+                        {gamma: 0.50}
+                    ]
+                }]
+            }
+            var mapElement = document.getElementById('map');
+            map = new google.maps.Map(mapElement, mapOptions);
+            // OPTIONAL: Set listener to tell when map is idle
+            // Can be useful during dev
+            google.maps.event.addListener(map, "idle", function(){
+                // console.log("map is idle");
+            });
+            var geocoder = new google.maps.Geocoder();
+            bounds = new google.maps.LatLngBounds();
+            locationCount = 0;
+            // Init InfoWindow and leave it
+            // for use when user clicks marker
+            infoWindow = new google.maps.InfoWindow( { content: "Loading content..." } );
+            // Loop through locations and set markers
+            for (i = 0; i < locations.length; i++) {
+
+              //show postdata
+              locationsdata = locations[i];
+
+              //var category_slug = locationsdata.category_slug;
+              //var category_slug = category_slug.split(',');
+
+              var postdiv = '<div class="listing mt-5">'+locationsdata.cat_html+'<h2><a href="'+locationsdata.posturl+'" target="_blank" class="text_overblue_pink" >'+locationsdata.placename+'</a></h2><small address="marker'+i+'" class="show_me_in_map" style="cursor: url('+locationsdata.iconlink+'), auto;">'+locationsdata.address+'</small></div>';
+              jQuery("#locatioposts").append(postdiv);
+
+
+                
+                var address = locationsdata.address;
+                //Get latitude and longitude from address
+                geocoder.geocode( {'address': address}, onGeocodeComplete(i,locations));
+            }
+            // Re-center map on window resize
+            google.maps.event.addDomListener(window, 'resize', function() {
+                var center = map.getCenter();
+                google.maps.event.trigger(map, "resize");
+                map.setCenter(center);
+            });
+        } // END init()
+        // Triggered as the geocode callback
+        function onGeocodeComplete(i,locations) {
+          //alert(i);
+            // Callback function for geocode on response from Google.
+            // We wrap it in 'onGeocodeComplete' so we can send the
+            // location index through to the marker to establish
+            // content.
+            var geocodeCallBack = function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    // The HTML content for the InfoWindow.
+                    // Includes a form to allow the user to
+                    // get directions.
+                    postdate = locations[i];
+                    var windowContent = '<div style="max-width: 200px" class="info_content">' + '<a href="'+postdate.posturl+'" class="text_overblue_pink" target="_blank" ><h6>'+postdate.eventtitle+'</h6></a>' + '<p><a href="'+postdate.posturl+'" ><img style="width: 100%" src="'+postdate.image_thumb+'" ></a></p><p>'+postdate.address+'</p>' + '</div>';
+
+                    // Create the marker for the location
+                    // We use 'html' key to attach the
+                    // InfoWindow content to the marker.
+                    var marker = new google.maps.Marker({
+                        icon: postdate.iconlink,
+                        position: results[0].geometry.location,
+                        map: map,
+                        html: windowContent,
+                        animation: google.maps.Animation.DROP,
+                        title: 'marker'+i
+                    });
+                    // Set event to display the InfoWindow anchored
+                    // to the marker when the marker is clicked.
+                    google.maps.event.addListener( marker, 'click', function() {
+                        // Updates the InfoWindow content with
+                        // the HTML held in the marker ('this').
+                        infoWindow.setContent(this.html);
+                        infoWindow.open(map, this);
+                    });
+                    // Add this marker to the map bounds
+                    extendBounds(results[0].geometry.location, locations );
+                } else {
+                    console.log('Location geocoding has failed: ' + google.maps.GeocoderStatus);
+                }
+            } // END geocodeCallBack()
+            return geocodeCallBack;
+        } // END onGeocodeComplete()
+        // Establishes the bounds for all the markers
+        // then centers and zooms the map to show all.
+        function extendBounds(latlng, locations) {
+            ++locationCount;
+            bounds.extend(latlng);
+            if (locationCount == locations.length) {
+                map.fitBounds(bounds);
+            }
+        } // END extendBounds()
+        
+        
+
+//after chnage
+        jQuery('body').delegate('.search_sub_show_result', 'click', function(){
+
+       // 
+       jQuery("#locatioposts").html("");
+       var maintag = jQuery("#maintag").val();
+       var suburb = jQuery("#suburb").val();
+
+          var  method ="post";
+          var  url ="loadMapData";
+           jQuery.ajax({
+                  type: method,
+                  url: ajaxurl,
+                  data: {
+                    'action':url,
+                    'maintag': maintag,
+                    'suburb': suburb
+
+                  },
+                  success:function(response) {
+                    var post_obj = JSON.parse(response);
+                  
+                    jQuery("#locatioposts").html("");
+                    init(post_obj);
+
+                  },
+                  error: function(errorThrown){
+                      console.log(errorThrown);
+                  }
+                });
+        
+
+      });
+
+        
+    }); // END $(window).load
+</script>
+ 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLlSGvx3MwtTjoeWbNdCjnRV5rEfWssCs&sensor=false&extension=.js"></script>
+
+
       <div class="row">
         <div class="col-md-12">
           <div class="ad mt-5 mb-5">
@@ -229,35 +427,46 @@ while ( $trending->have_posts() ) : $trending->the_post(); ?>
 </h2>
           <form action="">
             <div class="form-group">
-              <select class="form-control" name="" id="">
+              <!-- <select class="form-control" name="" id="">
                  <option value="Sydney">Sydney</option>
+               </select> -->
+                <?php
+                 global $maintags;
+                 
+
+                 $suburblist = loadsuburb();
+                 
+                ?>
+               
+              <select class="form-control" name="maintag" id="maintag">
+                <?php foreach ($maintags as $keytag => $valuetag) {
+                   echo '<option value="'.$keytag.'">'.$valuetag.'</option>';
+                 } ?>
+                 </select>
+              <select class="form-control" name="suburb" id="suburb">
+                 <?php
+                  foreach ($suburblist as $keysuburb => $valuesuburb) {
+                   echo '<option value="'.$keysuburb.'">'.$valuesuburb.'</option>';
+                 }
+                 ?>
                </select>
-              <select class="form-control" name="" id="">
-                 <option value="Sydney">Bondi Beach</option>
-               </select>
-              <select class="form-control" name="" id="">
-                 <option value="Sydney">Restuarants</option>
-               </select>
+               <button class="btn btn-outline-secondary search_sub_show_result" type="button">Search</button> 
             </div>
           </form>
-
-          <div class="listing mt-5">
-            <span class="badge light">play</span>
-            <h2>Name Place</h2>
-            <small>00 Darlignton Street,Bondi Beach, NSw <br>Discription 0040</small>
+          <div id="locatioposts">
+            
           </div>
+          
         </div>
         <div class="col-md-7">
-          <div class="g-map">
-
-          </div>
+           <div id="map"></div>
         </div>
       </div>
     </div>
   </section>
 
   <?php
-//Secret Foodies
+//Secret Foodies//
     $_num = 3;
     $secret = new WP_Query(
         array(
@@ -325,11 +534,7 @@ while ( $trending->have_posts() ) : $trending->the_post(); ?>
       <h1 class="pt-5">Newsletter</h1>
       <p>Discover and Enjoy New Places</p>
 
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="INSERT YOUR EMAIL">
-        <button class="btn btn-danger">subscribe</button>
-
-      </div>
+      <?php echo do_shortcode('[mc4wp_form id="35847"]'); ?>
     </div>
 
   </section>

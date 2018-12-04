@@ -3,7 +3,7 @@
                                 <div class="outer-div mb-4">
                                     <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg">
 
-                                    <div class="post food" style="background-image: url('<?php echo the_post_thumbnail_url('thumbnail'); ?>');"></div>
+                                    <a href="<?php the_permalink(); ?>" ><div class="post food" style="background-image: url('<?php echo the_post_thumbnail_url('thumbnail'); ?>');"></div></a>
                                 </div>
                             </div>
                             <div class="col-md-7 pr-md-0">

@@ -18,6 +18,7 @@ $sage_includes = [
   'lib/customizer.php', // Theme customizer
   'lib/admindashboard.php',
   'lib/custom_wp.php',
+  'lib/directory.php',
   
 ];
 

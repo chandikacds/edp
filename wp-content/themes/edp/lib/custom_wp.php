@@ -86,7 +86,7 @@ function ti_pagination($postcustom=NULL) {
 		'format'   => $format,
 		'total'    => $GLOBALS['wp_query']->max_num_pages,
 		'current'  => $paged,
-		'mid_size' => 1,
+		'mid_size' => 8,
 		'add_args' => array_map( 'urlencode', $query_args ),
 		'prev_text' => __( 'Previous', 'themetext' ),
 		'next_text' => __( 'Next', 'themetext' ),
@@ -122,6 +122,9 @@ function wpb_set_post_views($postID) {
 }
 //To keep the count accurate, lets get rid of prefetching
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
+
+
 
 
 

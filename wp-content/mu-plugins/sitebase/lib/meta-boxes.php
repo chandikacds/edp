@@ -254,6 +254,10 @@ $prefix = "rw_";
 $county_list = array();
 $county_list['au']="Australia";
 
+$citylist = array();
+$citylist['Sydney'] = 'Sydney';
+$citylist['Melbourne'] = 'Melbourne';
+
 
 
 $args = array( 'post_type' => 'base_venue','orderby' => 'post_title', 'order'=> 'ASC', 'posts_per_page' => -1 );
@@ -275,7 +279,7 @@ $meta_boxes[] = array(
 	// Meta box title - Will appear at the drag and drop handle bar. Required.
 	'title' => __( 'Venue Information', 'rwmb' ),
 	// Post types, accept custom post types as well - DEFAULT is array('post'). Optional.
-	'pages' => array( 'base_sydney','base_melbourne','post'),
+	'pages' => array( 'base_sydney','base_melbourne','post',),
 	// Where the meta box appear: normal (default), advanced, side. Optional.
 	'context' => 'normal',
 	// Order of meta box: high (default), low. Optional.
@@ -325,13 +329,21 @@ $meta_boxes[] = array(
 						'type'  => 'text',
 						'clone' => false,
 					),
+					array(
+						'name'  => esc_html__( 'Suburb:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_suburb",
+						//'desc'  => esc_html__( 'Enter the Email', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
 					 	
 					 array(
 						'name'  => esc_html__( 'City:', 'your-prefix' ),
 						'id'    => "{$prefix}{$slug}_city",
 						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
-						'type'  => 'text',
-						'clone' => false,
+						'type'            => 'select',
+						    // Array of 'value' => 'Label' pairs
+						'options'         => $citylist,
 					),
 					
 					  array(
@@ -387,6 +399,104 @@ $meta_boxes[] = array(
 
 
 
+$meta_boxes[] = array(
+	// Meta box id, UNIQUE per meta box. Optional since 4.1.5
+	'id' => 'realvenue-meta',
+	// Meta box title - Will appear at the drag and drop handle bar. Required.
+	'title' => __( 'Venue Information', 'rwmb' ),
+	// Post types, accept custom post types as well - DEFAULT is array('post'). Optional.
+	'pages' => array( 'base_venue'),
+	// Where the meta box appear: normal (default), advanced, side. Optional.
+	'context' => 'normal',
+	// Order of meta box: high (default), low. Optional.
+	'priority' => 'high',
+	// Auto save: true, false (default). Optional.
+	'autosave' => true,
+	'geo' => array(
+    'componentRestrictions' => array(
+        'country' => 'au',
+    )
+),
+	// Register this meta box for posts matched below conditions
+	//'include' => array('ID'  => array( 4 ),),
+	// List of meta fields
+	'fields' => array(
+
+				 
+					array(
+						'name'  => esc_html__( 'Address:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_address",
+						//'desc'  => esc_html__( 'Enter the Email', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					array(
+						'name'  => esc_html__( 'Suburb:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_suburb",
+						//'desc'  => esc_html__( 'Enter the Email', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					 	
+					 array(
+						'name'  => esc_html__( 'City:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_city",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'            => 'select',
+						    // Array of 'value' => 'Label' pairs
+						'options'         => $citylist,
+					),
+					
+					  array(
+						   'name'  => esc_html__( 'Contry:', 'your-prefix' ),
+						   'id'    => "{$prefix}{$slug}_country",
+						   //'desc'  => esc_html__( 'Select the Project status', 'your-prefix' ),
+						    'type'            => 'select',
+						    // Array of 'value' => 'Label' pairs
+						    'options'         => $county_list,
+						    // Allow to select multiple value?
+						    'multiple'        => false,
+						    // Placeholder text
+						   // 'placeholder'     => 'Select an Item',
+						    // Display "Select All / None" button?
+						    'select_all_none' => true,
+						 
+
+						),
+					  
+					    array(
+						'name'  => esc_html__( 'State or Province:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_state",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					    array(
+						'name'  => esc_html__( 'Postal Code:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_postcode",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					array(
+						'name'  => esc_html__( 'Phone:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_phone",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					array(
+						'name'  => esc_html__( 'Website:', 'your-prefix' ),
+						'id'    => "{$prefix}{$slug}_website",
+						//'desc'  => esc_html__( 'Enter the Phone', 'your-prefix' ),
+						'type'  => 'text',
+						'clone' => false,
+					),
+					
+					
+					
+					
+));
 
 /*
 

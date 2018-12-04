@@ -136,48 +136,8 @@
               </ul>
             </div>
            <?php } ?> 
-            <div id="carousel" class="flexslider">
-              <ul class="slides">
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide1.jpg" />
-                  <div class="caption bottom">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-                    <span class="badge">SECRET FOODIES</span>
-                  </div>
-
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide2.jpg" />
-                  <div class="caption bottom">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-                    <span class="badge">Eat</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide3.jpg" />
-                  <div class="caption bottom">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-                    <span class="badge">Drink</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide4.jpg" />
-                  <div class="caption bottom">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/play.svg" />
-                    <span class="badge">play</span>
-                  </div>
-                </li>
-                <li>
-                  <img src="<?php echo get_template_directory_uri(); ?>/assets/img/slide5.jpg" />
-                  <div class="caption bottom">
-                    <img class="ico" src="<?php echo get_template_directory_uri(); ?>/assets/img/eat.svg" />
-                    <span class="badge">SECRET FOODIES</span>
-                  </div>
-                </li>
-
-                <!-- items mirrored twice, total of 12 -->
-              </ul>
-            </div>
+           
+            <?php  get_template_part( 'templates/content', 'megamenu' ); ?>
 
           </div>
         </div>
